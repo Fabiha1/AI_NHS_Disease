@@ -5,20 +5,20 @@ from tensorflow.keras.models import load_model
 
 # Load the saved LabelEncoder
 label_encoder = joblib.load('label_encoder.pkl')
-dis_and_smpts = pd.read_csv('main.csv')
+dis_and_smpts = pd.read_csv('Testing.csv')
 
 # Load the trained model
 loaded_model = load_model('tfmodel')
 
 # Simulate user inputs (replace with actual user inputs)
-user_inputs = ['shortness of breath', 'palpitation', 'pain chest', 'asthenia', 'dizziness', 'sweat', 'nausea', 'fall', 'sweating increased', 'pressure chest', 'vertigo']
+user_inputs = ['itching', 'skin_rash', 'chills', 'vomiting', 'fatigue']
 
 symptom_positions = [dis_and_smpts.columns.get_loc(symptom) for symptom in user_inputs]
 
 # Initialize an array for symptoms, initializing with 0
-symptoms_array = np.zeros(len(dis_and_smpts.columns[1:])-1)
+symptoms_array = np.zeros(len(dis_and_smpts.columns[1:]))
 
-# Map symptom names to their corresponding positions in the encoder
+# Map symptom names to their corresponding positions in the array
 for i in symptom_positions:
     symptoms_array[i] = 1
 
