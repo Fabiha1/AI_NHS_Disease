@@ -1,25 +1,38 @@
+import joblib
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
+import numpy as np
 from tensorflow.keras.models import load_model
 
-dis_and_smpts = pd.read_csv('testdata.csv')
-# Assuming 'dis_and_smpts' is your DataFrame containing the new data
-new_data = pd.get_dummies(dis_and_smpts)
+# Load the saved LabelEncoder
+dis_and_smpts = pd.read_csv('main.csv')
 
-# Load the trained model (if not already loaded)
-model = load_model('tfmodel')  # Replace 'your_model_file.h5' with the actual filename of your trained model
+# Load the trained model
+loaded_model = load_model('tfmodel')
 
-# For multi-class classification:
-y_probabilities = model.predict(new_data)
-y_predictions = [val.argmax() for val in y_probabilities]
+# Simulate user inputs (replace with actual user inputs)
+user_inputs = ['shortness of breath', 'palpitation', 'pain chest', 'asthenia', 'dizziness', 'sweat', 'nausea', 'fall', 'sweating increased', 'pressure chest', 'vertigo']
 
-# For binary classification (using a threshold of 0.5):
-# y_probabilities = model.predict(new_data)
-# y_predictions = [0 if val < 0.5 else 1 for val in y_probabilities]
+symptom_positions = [dis_and_smpts.columns.get_loc(symptom) for symptom in user_inputs]
 
-# Convert class indices back to original class labels
-label_encoder = LabelEncoder()
-label_encoder.fit(dis_and_smpts['label'])
-predicted_labels = label_encoder.inverse_transform(y_predictions)
+# Initialize an array for symptoms, initializing with 0
+symptoms_array = np.zeros(len(dis_and_smpts.columns[1:])-1)
 
-print("Predicted Labels:", predicted_labels)
+# Map symptom names to their corresponding positions in the encoder
+for i in symptom_positions:
+    symptoms_array[i] = 1
+
+# Reshape the inputs to match the model's expectations
+encoded_inputs = [symptoms_array]
+
+# Reshape the inputs to match the model's expectations
+encoded_inputs = np.array(encoded_inputs)  # Convert the list to a numpy array
+encoded_inputs = np.reshape(encoded_inputs, (len(encoded_inputs), -1))  # Reshape to (batch_size, num_features)
+
+# Use the loaded model for prediction
+user_pred_probs = loaded_model.predict(encoded_inputs)
+user_pred_index = user_pred_probs.argmax(axis=1)[0]  # Get the index of the predicted class
+
+# Convert the predicted index back to the original disease label
+predicted_disease = label_encoder.inverse_transform([user_pred_index])[0]
+
+print("Predicted Disease:", predicted_disease)
