@@ -30,7 +30,7 @@ model.add(Dense(units=len(label_encoder.classes_), activation='softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=800, batch_size=32)
+model.fit(x_train, y_train, epochs=750, batch_size=32)
 
 y_hat = model.predict(x_test)
 y_pred = [val.argmax() for val in y_hat]  # Convert probabilities to class indices

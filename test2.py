@@ -4,6 +4,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load the saved LabelEncoder
+label_encoder = joblib.load('label_encoder.pkl')
 dis_and_smpts = pd.read_csv('main.csv')
 
 # Load the trained model
