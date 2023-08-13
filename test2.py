@@ -6,12 +6,13 @@ from tensorflow.keras.models import load_model
 # Load the saved LabelEncoder
 label_encoder = joblib.load('label_encoder.pkl')
 dis_and_smpts = pd.read_csv('Testing.csv')
+precautions = pd.read_csv('symptom_precaution.csv')
 
 # Load the trained model
 loaded_model = load_model('tfmodel')
 
 # Simulate user inputs (replace with actual user inputs)
-user_inputs = ['itching', 'skin_rash', 'chills', 'vomiting', 'fatigue']
+user_inputs = ['headache', 'diarrhoea', 'fluid_overload']
 
 symptom_positions = [dis_and_smpts.columns.get_loc(symptom) for symptom in user_inputs]
 
@@ -37,3 +38,14 @@ user_pred_index = user_pred_probs.argmax(axis=1)[0]  # Get the index of the pred
 predicted_disease = label_encoder.inverse_transform([user_pred_index])[0]
 
 print("Predicted Disease:", predicted_disease)
+
+# Find the precautions associated with the predicted disease
+predicted_precautions = precautions[precautions['Disease'] == predicted_disease]
+
+print("\nPrecautions:")
+for i, row in predicted_precautions.iterrows():
+    for j in range(1, 5):  # Iterate through precautions
+        precaution_col = f'Precaution_{j}'
+        precaution = row[precaution_col]
+        if pd.notna(precaution):
+            print(f"{precaution_col}: {precaution}")
