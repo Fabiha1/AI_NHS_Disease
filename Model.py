@@ -1,13 +1,13 @@
 import pandas as pd
 import joblib
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load training data
-train_data = pd.read_csv('Training.csv')
+train_data = pd.read_csv('Training2.csv')
+
+train_data = train_data.drop_duplicates(keep='first')  # Keep only the first instance of duplicates in training data
 label_encoder = LabelEncoder()
 train_data['prognosis'] = label_encoder.fit_transform(train_data['prognosis'])
 
@@ -24,18 +24,15 @@ joblib.dump(label_encoder, 'label_encoder.pkl')
 
 print(train_data.head())
 
-model = Sequential()
-model.add(Dense(units=32, activation='relu', input_dim=len(x_train.columns)))
-model.add(Dense(units=64, activation='relu'))
-model.add(Dense(units=len(label_encoder.classes_), activation='softmax'))
+# Initialize and train the Random Forest model
+model = RandomForestClassifier(random_state=42)
+model.fit(x_train, y_train)
 
-model.compile(loss='sparse_categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+# Make predictions
+y_pred = model.predict(x_test)
 
-model.fit(x_train, y_train, epochs=300, batch_size=32)
-
-y_hat = model.predict(x_test)
-y_pred = [val.argmax() for val in y_hat]  # Convert probabilities to class indices
+# Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
-print(accuracy)
+print('Accuracy:', accuracy)
 
-model.save('tfmodel')
+joblib.dump(model, 'random_forest_model.pkl')
