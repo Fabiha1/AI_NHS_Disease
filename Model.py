@@ -5,9 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load training data
-train_data = pd.read_csv('Training2.csv')
+train_data = pd.read_csv('Training3.csv')
 
-train_data = train_data.drop_duplicates(keep='first')  # Keep only the first instance of duplicates in training data
 label_encoder = LabelEncoder()
 train_data['prognosis'] = label_encoder.fit_transform(train_data['prognosis'])
 
