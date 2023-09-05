@@ -3,7 +3,6 @@ from flask import Flask, render_template, request
 from main import Main
 
 app = Flask(__name__)
-#app.config['SECRET_KEY'] = 'stank'
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -17,9 +16,10 @@ def predict():
             symptoms.append(symptom_input)
 
     main = Main(symptoms)
-    print(main.predict_disease())
+    prognosis = main.predict_disease()
+    precautions = main.get_precautions()
 
-    return "Data Received Successfully"
+    return render_template('form.html', prognosis=prognosis, precaution1=precautions[0], precaution2=precautions[1], precaution3=precautions[2], precaution4=precautions[3])
 
 if __name__ == '__main__':
     app.run(debug=True)

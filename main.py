@@ -4,7 +4,6 @@ import numpy as np
 class Main:
     def __init__(self, symptoms):
         self.user_inputs = symptoms
-        print(symptoms)
         self.load_files()
 
     def load_files(self):
@@ -17,9 +16,6 @@ class Main:
         self.loaded_model = joblib.load('random_forest_model.pkl')
 
     def predict_disease(self):
-        # Simulate user inputs (replace with actual user inputs)
-        #user_inputs = ['itching', 'vomiting', 'skin rash', 'continuous sneezing']
-
         symptom_positions = [self.dis_and_smpts.columns.get_loc(symptom) for symptom in self.user_inputs]
 
         # Initialize an array for symptoms, initializing with 0
@@ -45,10 +41,11 @@ class Main:
         # Find the precautions associated with the predicted disease
         predicted_precautions = self.precautions[self.precautions['Disease'] == self.predict_disease()]
 
-        print("\nPrecautions:")
+        precautions =[]
         for i, row in predicted_precautions.iterrows():
             for j in range(1, 5):  # Iterate through precautions
                 precaution_col = f'Precaution {j}'
-                precaution = row[precaution_col]
-                if pd.notna(precaution):
-                    print(f"{precaution_col}: {precaution}")
+                precautions.append(row[precaution_col])
+
+        precautions = [item.capitalize() for item in precautions]
+        return precautions
