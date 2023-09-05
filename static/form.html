@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form - Gracious Courteous Spider</title>
+    <meta property="og:title" content="Form - Gracious Courteous Spider"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <meta property="twitter:card" content="summary_large_image"/>
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+
+
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+
+
+    </style>
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+            data-tag="font"
+    />
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+<div>
+    <script
+            type="text/javascript"
+            src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"
+    ></script>
+    <link href="./form.css" rel="stylesheet"/>
+
+    <div class="form-container">
+        <div class="form-container1">
+            <div class="form-container2"></div>
+            <img
+                    alt="image"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/National_Health_Service_%28England%29_logo.svg/2560px-National_Health_Service_%28England%29_logo.svg.png"
+                    class="form-image"
+            />
+        </div>
+        <div class="form-container3">
+            <form name="patient information form" class="form-form">
+                <input
+                        type="text"
+                        placeholder="First Name"
+                        class="form-textinput input"
+                />
+                <input
+                        type="text"
+                        placeholder="Last Name"
+                        class="form-textinput1 input"
+                />
+                <h1 class="form-text">Patient Information</h1>
+                <div class="form-div">
+                    <dangerous-html
+                            html="<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Define a CSS class for styling the date picker */
+    .custom-date-picker {
+      font-family: Arial, sans-serif; /* Specify the desired font family */
+      font-size: 16px; /* Specify the desired font size */
+      color: #2b2929;
+      border: 1px solid #2b2929; /* Set the border color and thickness */
+      border-radius: 4px; /* Add rounded edges */
+      padding: 6px; /* Add some padding for spacing */
+    }
+  </style>
+</head>
+<body>
+
+<form action='/action_page.php'>
+  <!-- Add the 'custom-date-picker' class to the input element -->
+  <input type='date' id='birthday' name='birthday' class='custom-date-picker'>
+</form>
+
+</body>
+</html>
+"
+                    ></dangerous-html>
+                </div>
+                <select id="sex" name="Sex" class="form-select">
+                    <option value="Male" selected="">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span class="form-text01">
+              <span>First Name</span>
+              <br/>
+              <br/>
+            </span>
+                <span class="form-text05">
+              <span>Sex</span>
+              <br/>
+              <br/>
+            </span>
+                <span class="form-text09">
+              <span>Date of Birth</span>
+              <br/>
+            </span>
+                <span class="form-text12">
+              <span>Last Name</span>
+              <br/>
+            </span>
+            </form>
+            <form method="POST" action="/predict" name="symptoms_form" id="symptoms_form" class="form-form1">
+                <h1 class="form-text15">Enter Symptoms</h1>
+                <span class="form-text16">
+              <span>Symptom 1:</span>
+              <br/>
+            </span>
+                <span class="form-text19">
+              <span>Symptom 5:</span>
+              <br/>
+            </span>
+                <span class="form-text22">
+              <span>Symptom 3:</span>
+              <br/>
+            </span>
+                <span class="form-text25">
+              <span>Symptom 4:</span>
+              <br/>
+            </span>
+                <span class="form-text28">
+              <span>Symptom 6:</span>
+              <br/>
+            </span>
+                <span class="form-text31">
+              <span>Symptom 2:</span>
+              <br/>
+            </span>
+                <input type="text" name="symptomInput1" class="form-select1" list="symptomList" id="symptomInput1"
+                       placeholder="Select or enter a symptom">
+                <datalist id="symptomList">
+                    <option value="abdominal pain">
+                    <option value="abnormal menstruation">
+                    <option value="acidity">
+                    <option value="acute liver failure">
+                    <option value="altered sensorium">
+                    <option value="anxiety">
+                    <option value="back pain">
+                    <option value="belly pain">
+                    <option value="blackheads">
+                    <option value="bladder discomfort">
+                    <option value="blister">
+                    <option value="blood in sputum">
+                    <option value="bloody stool">
+                    <option value="blurred and distorted vision">
+                    <option value="breathlessness">
+                    <option value="brittle nails">
+                    <option value="bruising">
+                    <option value="burning micturition">
+                    <option value="chest pain">
+                    <option value="chills">
+                    <option value="cold hands and feets">
+                    <option value="coma">
+                    <option value="congestion">
+                    <option value="constipation">
+                    <option value="continuous feel of urine">
+                    <option value="continuous sneezing">
+                    <option value="cough">
+                    <option value="cramps">
+                    <option value="dark urine">
+                    <option value="dehydration">
+                    <option value="depression">
+                    <option value="diarrhoea">
+                    <option value="dischromic  patches">
+                    <option value="distention of abdomen">
+                    <option value="dizziness">
+                    <option value="drying and tingling lips">
+                    <option value="enlarged thyroid">
+                    <option value="excessive hunger">
+                    <option value="extra marital contacts">
+                    <option value="family history">
+                    <option value="fast heart rate">
+                    <option value="fatigue">
+                    <option value="fluid overload">
+                    <option value="fluid overload.1">
+                    <option value="foul smell of urine">
+                    <option value="headache">
+                    <option value="high fever">
+                    <option value="hip joint pain">
+                    <option value="history of alcohol consumption">
+                    <option value="increased appetite">
+                    <option value="indigestion">
+                    <option value="inflammatory nails">
+                    <option value="internal itching">
+                    <option value="irregular sugar level">
+                    <option value="irritability">
+                    <option value="irritation in anus">
+                    <option value="itching">
+                    <option value="joint pain">
+                    <option value="knee pain">
+                    <option value="lack of concentration">
+                    <option value="lethargy">
+                    <option value="loss of appetite">
+                    <option value="loss of balance">
+                    <option value="loss of smell">
+                    <option value="malaise">
+                    <option value="mild fever">
+                    <option value="mood swings">
+                    <option value="movement stiffness">
+                    <option value="mucoid sputum">
+                    <option value="muscle pain">
+                    <option value="muscle wasting">
+                    <option value="muscle weakness">
+                    <option value="nausea">
+                    <option value="neck pain">
+                    <option value="nodal skin eruptions">
+                    <option value="obesity">
+                    <option value="pain behind the eyes">
+                    <option value="pain during bowel movements">
+                    <option value="pain in anal region">
+                    <option value="painful walking">
+                    <option value="palpitations">
+                    <option value="passage of gases">
+                    <option value="patches in throat">
+                    <option value="phlegm">
+                    <option value="polyuria">
+                    <option value="prominent veins on calf">
+                    <option value="puffy face and eyes">
+                    <option value="pus filled pimples">
+                    <option value="receiving blood transfusion">
+                    <option value="receiving unsterile injections">
+                    <option value="red sore around nose">
+                    <option value="red spots over body">
+                    <option value="redness of eyes">
+                    <option value="restlessness">
+                    <option value="runny nose">
+                    <option value="rusty sputum">
+                    <option value="scurring">
+                    <option value="shivering">
+                    <option value="silver like dusting">
+                    <option value="sinus pressure">
+                    <option value="skin peeling">
+                    <option value="skin rash">
+                    <option value="slurred speech">
+                    <option value="small dents in nails">
+                    <option value="spinning movements">
+                    <option value="spotting  urination">
+                    <option value="stiff neck">
+                    <option value="stomach bleeding">
+                    <option value="stomach pain">
+                    <option value="sunken eyes">
+                    <option value="sweating">
+                    <option value="swelled lymph nodes">
+                    <option value="swelling joints">
+                    <option value="swelling of stomach">
+                    <option value="swollen blood vessels">
+                    <option value="swollen extremeties">
+                    <option value="swollen legs">
+                    <option value="throat irritation">
+                    <option value="toxic look (typhos)">
+                    <option value="ulcers on tongue">
+                    <option value="unsteadiness">
+                    <option value="visual disturbances">
+                    <option value="vomiting">
+                    <option value="watering from eyes">
+                    <option value="weakness in limbs">
+                    <option value="weakness of one body side">
+                    <option value="weight gain">
+                    <option value="weight loss">
+                    <option value="yellow crust ooze">
+                    <option value="yellow urine">
+                    <option value="yellowing of eyes">
+                    <option value="yellowish skin">
+                </datalist>
+                <input type="text" name="symptomInput2" class="form-select2" list="symptomList" id="symptomInput2"
+                       placeholder="Select or enter a symptom">
+                <input type="text" name="symptomInput3" class="form-select3" list="symptomList" id="symptomInput3"
+                       placeholder="Select or enter a symptom">
+                <input type="text" name="symptomInput4" class="form-select4" list="symptomList" id="symptomInput4"
+                       placeholder="Select or enter a symptom">
+                <input type="text" name="symptomInput5" class="form-select5" list="symptomList" id="symptomInput5"
+                       placeholder="Select or enter a symptom">
+                <input type="text" name="symptomInput6" class="form-select6" list="symptomList" id="symptomInput6"
+                       placeholder="Select or enter a symptom">
+                <input type="submit" value="Submit" class="form-button button>
+              <span class=" form-text34">
+            </form>
+            <form name="prognosis form" id="prognosis form" class="form-form2">
+                <h1 class="form-text37">Prognosis:</h1>
+                <span class="form-text38">
+              <span>Precaution 1:</span>
+              <br/>
+            </span>
+                <span class="form-text41">
+              <span>Precaution 3:</span>
+              <br/>
+            </span>
+                <span class="form-text44">
+              <span>Precaution 4:</span>
+              <br/>
+            </span>
+                <span class="form-text47">
+              <span>Precaution 2:</span>
+              <br/>
+            </span>
+            </form>
+        </div>
+        <form class="form-form3"></form>
+        <h1 class="form-text50">Disease Prediction Form</h1>
+    </div>
+</div>
+</body>
+</html>
